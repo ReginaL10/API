@@ -1,0 +1,39 @@
+
+context.res = {
+status: 200,
+body;'Hello World"
+}
+
+const  createMongoClient  =  require ( '../shared/mongoClient' ) ;
+
+módulo . exportações  =  função assíncrona  ( contexto , req ) {   
+  const  {  cliente : MongoClient , closeConnectionFn }  =  aguardam  createMongoClient ( ) ;
+  const  produtos  =  MongoClient . coleção ( 'produtos' ) ;
+  const  res  =  esperar  Produtos . find ( { } ) ;
+  const  body  =  await  res . toArray ( ) ;
+  closeConnectionFn ( ) ;
+
+  contexto . res  =  {
+    status : 200 ,
+    corpo
+  } ;
+}
+
+{
+
+const  createMongoClient  =  require ( '../shared/mongoClient' ) ;
+
+módulo . exportações  =  função assíncrona  ( contexto , req ) {   
+  produto  const =  req . corpo ;
+
+ const  {  cliente : MongoClient , closeConnectionFn }  =  aguardam  createMongoClient ( ) ;
+
+ const  produtos  =  MongoClient . coleção ( 'produtos' ) ;
+ const  res  =  esperar  Produtos . inserir ( produto ) ;
+ closeConnectionFn ( ) ;
+
+ contexto . res  =  {
+  status : 201 ,
+  corpo : res
+} ;
+}
